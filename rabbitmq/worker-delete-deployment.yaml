@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-delete
+  namespace: techchallenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-delete
+  template:
+    metadata:
+      labels:
+        app: worker-delete
+    spec:
+      containers:
+      - name: worker-delete
+        image: worker-delete
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: CONNECTION_STRING
+            value: "Server=sqlserver;Database=TechChallenge;User Id=sa;Password=MinhaSenhaForte123!;TrustServerCertificate=True;"

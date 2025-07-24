@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-insert
+  namespace: techchallenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-insert
+  template:
+    metadata:
+      labels:
+        app: worker-insert
+    spec:
+      containers:
+      - name: worker-insert
+        image: worker-insert
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: CONNECTION_STRING
+            value: "Server=sqlserver;Database=TechChallenge;User Id=sa;Password=MinhaSenhaForte123!;TrustServerCertificate=True;"
