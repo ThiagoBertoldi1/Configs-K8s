@@ -18,6 +18,13 @@ spec:
       - name: prometheus
         image: prom/prometheus:latest
         imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+          limits:
+            cpu: "1000m"
+            memory: "2Gi"
         args:
           - "--config.file=/etc/prometheus/prometheus.yml"
           - "--log.level=debug"

@@ -19,6 +19,13 @@ spec:
           image: mcr.microsoft.com/mssql/server:2022-latest
           ports:
             - containerPort: 1433
+          resources:
+            requests:
+              cpu: "1000m"
+              memory: "2Gi"
+            limits:
+              cpu: "2000m"
+              memory: "4Gi"
           env:
             - name: ACCEPT_EULA
               value: "Y"

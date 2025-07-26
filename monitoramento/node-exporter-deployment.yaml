@@ -17,3 +17,10 @@ spec:
       - name: node-exporter
         image: quay.io/prometheus/node-exporter:latest
         imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "100Mi"
+          limits:
+            cpu: "64m"
+            memory: "128Mi"
