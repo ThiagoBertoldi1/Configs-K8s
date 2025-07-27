@@ -34,6 +34,17 @@ data:
         static_configs:
           - targets: ['rabbitmq.techchallenge.svc.cluster.local:15692']
 
+      - job_name: 'cadvisor'
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_container_port_name]
+            action: keep
+            regex: http
+          - source_labels: [__meta_kubernetes_pod_label_app]
+            action: keep
+            regex: cadvisor
+
       - job_name: 'kubernetes-apiservers'
         kubernetes_sd_configs:
           - role: endpoints
